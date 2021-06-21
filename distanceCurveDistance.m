@@ -13,6 +13,7 @@ if  N_tot == 0
     A_not_empty = 0;
     mask_dmax = zeros(size(A,1), size(A,2));
     mask_match_and_zero = zeros(size(A,1), size(A,2));
+    zone_B_match_dmax = zeros(size(A,1), size(A,2));
 else
     % If A not empty:
     A_not_empty = 1;
