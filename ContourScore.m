@@ -13,8 +13,11 @@ if ~exist('DT_B','var')
 end
 
 % Compute distances between both lines
-[D_pred_to_gt, fp, match_pred, ~, mask_tp_pred, mask_fp] = distanceCurveDistance(I_pred,I_gt,dmax,DT_gt);
-[D_gt_to_pred, fn, match_gt, ~, mask_tp_gt, mask_fn] = distanceCurveDistance(I_gt,I_pred,dmax, DT_pred);
+[D_pred_to_gt, fp, match_pred, ~, mask_tp_pred_and_zero, mask_fp, zone_GT_dmax] = distanceCurveDistance(I_pred,I_gt,dmax,DT_gt);
+[D_gt_to_pred, fn, match_gt, ~, mask_tp_gt_and_zero, mask_fn, zone_Pred_dmax] = distanceCurveDistance(I_gt,I_pred,dmax, DT_pred);
+
+mask_tp_pred = mask_tp_pred_and_zero .* I_pred;
+mask_tp_gt = mask_tp_gt_and_zero .* I_gt;
 
 % get total number of pixels in image and gt:
 n_pixel_image = size(I_pred,1) * size(I_pred,2);
@@ -55,6 +58,9 @@ scoreStructure.mask_tp_pred = mask_tp_pred;
 scoreStructure.mask_tp_gt = mask_tp_gt;
 scoreStructure.mask_fn = mask_fn;
 scoreStructure.mask_fp = mask_fp;
+scoreStructure.mask_zone_dmax_gt = zone_GT_dmax;
+scoreStructure.mask_zone_dmax_pred = zone_Pred_dmax;
+
 
 end
 

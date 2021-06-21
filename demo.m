@@ -9,13 +9,15 @@ width = 100;
 coord_gt = [1,1;width,height];
 I_gt = convertPolyLineIntoBinaryImage(coord_gt(:,1), coord_gt(:,2), height, width);
 
-coord_pred = [10,1; width-10, height];
+offset = 20;
+
+coord_pred = [offset,1; width-offset, height];
 I_pred = convertPolyLineIntoBinaryImage(coord_pred(:,1), coord_pred(:,2), height, width);
 
 %% Compute distance contour score:
 
 % Define dmax:
-dmax = 10;
+dmax = 5;
 % dmax = 0.02 * sqrt(height^2 + width^2); % 2% of the diagonal of the image.
 
 [~, scoreStructure] = ContourScore(I_pred, I_gt, dmax);
@@ -23,3 +25,5 @@ dmax = 10;
 % binary images if you already computed them.
 
 %% Show results:
+
+[I_show_final] = showContourScore(scoreStructure);

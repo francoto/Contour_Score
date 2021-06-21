@@ -1,4 +1,4 @@
-function [D_AB, number_non_match, number_match, A_not_empty, mask_match_and_zero, mask_dmax] = distanceCurveDistance(A,B,dmax, B_distance_transform)
+function [D_AB, number_non_match, number_match, A_not_empty, mask_match_and_zero, mask_dmax, zone_B_match_dmax] = distanceCurveDistance(A,B,dmax, B_distance_transform)
 %distanceCurveDistance Compute distance in pixel from pixels set to true in
 %A to pixels set to true in B.
 %   
@@ -20,7 +20,10 @@ else
         % compute distance transform for B:
         B_distance_transform = TruncatedDistanceTrandsform(B,dmax);
     end
-
+    
+    % distance threshold:
+    zone_B_match_dmax = B_distance_transform < dmax;
+    
     % extract distance to pixels on in B:
     distances_AB = A .* B_distance_transform;
     
