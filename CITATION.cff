@@ -1,0 +1,26 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Contour Score
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Tom
+    family-names: François
+    email: tom.francois@ntymail.com
+    orcid: 'https://orcid.org/0000-0001-5226-3089'
+identifiers:
+  - type: doi
+    value: 10.1007/s11548-020-02151-w
+    description: research paper presenting the contour score
+repository-code: 'https://github.com/francoto/Contour_Score'
+abstract: "This repository contains the Matlab implementation of the metrics described in [1]. This contour score has bean used to compare contours with each other, using a truncated distance-based approach.\n\n[1]\_https://link.springer.com/article/10.1007/s11548-020-02151-w"
+keywords:
+  - metric
+  - contour
+  - score
+  - edge
+license: MIT
